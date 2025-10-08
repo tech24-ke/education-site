@@ -257,16 +257,20 @@ export default function Page() {
 <section className="relative h-[74vh] min-h-[520px] overflow-hidden">
   {/* background image */}
   <Image
-    src="/templates/education-hero.jpg" // change if you placed it elsewhere
+    src="/templates/education-hero.jpg"
     alt=""
     fill
     priority
+    sizes="100vw"
+    quality={85}
     aria-hidden
     className="object-cover object-center"
   />
 
+
   {/* gradient overlay for readability */}
-  <div className="absolute inset-0 bg-[radial-gradient(1000px_480px_at_70%_10%,rgba(8,20,43,0.55)_0%,rgba(8,20,43,0.45)_35%,rgba(8,20,43,0.35)_60%),linear-gradient(180deg,rgba(8,20,43,0.65)_0%,rgba(11,27,58,0.85)_100%)]" />
+  <div className="absolute inset-0 bg-[radial-gradient(1000px_480px_at_70%_10%,rgba(8,20,43,0.45)_0%,rgba(8,20,43,0.35)_35%,rgba(8,20,43,0.25)_60%),linear-gradient(180deg,rgba(8,20,43,0.55)_0%,rgba(11,27,58,0.75)_100%)]" />
+
 
   {/* content */}
   <div className="relative z-10 h-full max-w-6xl mx-auto px-6 flex flex-col items-center justify-center text-center text-white">
