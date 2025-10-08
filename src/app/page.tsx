@@ -21,6 +21,35 @@ const MAP_EMBED_SRC = `https://www.google.com/maps?q=${encodeURIComponent(
   ADDRESS
 )}&output=embed`;
 
+function Avatar({
+  src,
+  alt,
+  fallback,
+}: {
+  src?: string;
+  alt: string;
+  fallback: string;
+}) {
+  const [err, setErr] = useState(false);
+  return (
+    <div className="h-14 w-14 rounded-full overflow-hidden bg-gray-100 border border-gray-200 grid place-items-center">
+      {!err && src ? (
+        <Image
+          src={src}
+          alt={alt}
+          width={56}
+          height={56}
+          className="h-full w-full object-cover"
+          onError={() => setErr(true)}
+        />
+      ) : (
+        <span className="text-gray-600 text-sm font-semibold">{fallback}</span>
+      )}
+    </div>
+  );
+}
+
+
 /* ---------- Inline icons ---------- */
 function ShieldCheckIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -225,47 +254,61 @@ export default function Page() {
       </header>
 
       {/* ===== HERO ===== */}
-      <section className="relative h-[74vh] min-h-[520px] overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(1000px_480px_at_70%_10%,rgba(15,58,131,0.35)_0%,rgba(15,58,131,0.15)_35%,transparent_60%),linear-gradient(180deg,#08142B_0%,#0B1B3A_100%)]" />
-        <div className="relative z-10 h-full max-w-6xl mx-auto px-6 flex flex-col items-center justify-center text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
-            Unlock better grades with 1-to-1 tutoring
-          </h1>
-          <p className="mt-4 max-w-2xl text-base md:text-lg text-gray-200">
-            Personalized lessons for Primary, Secondary, KCSE &amp; IGCSE/GCSE. Vetted tutors.
-            Weekly progress updates.
-          </p>
+<section className="relative h-[74vh] min-h-[520px] overflow-hidden">
+  {/* background image */}
+  <Image
+    src="/templates/education-hero.jpg" // change if you placed it elsewhere
+    alt=""
+    fill
+    priority
+    aria-hidden
+    className="object-cover object-center"
+  />
 
-          <div className="mt-10 w-full max-w-3xl">
-            <div className="bg-white rounded-2xl shadow-2xl p-3 grid grid-cols-1 md:grid-cols-4 gap-3 text-left">
-              <input
-                placeholder="Subject (e.g., Math, Chemistry)"
-                className="col-span-1 md:col-span-2 h-12 rounded-xl border border-gray-300 px-4 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#0B1B3A] bg-white"
-              />
-              <select
-                className="h-12 rounded-xl border border-gray-300 px-4 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#0B1B3A] appearance-none"
-                defaultValue="Level"
-              >
-                <option disabled>Level</option>
-                <option>Primary</option>
-                <option>Secondary</option>
-                <option>IGCSE / GCSE</option>
-                <option>KCSE</option>
-                <option>University</option>
-              </select>
-              <Link
-                href="#curriculum"
-                className="h-12 rounded-xl bg-[#25D366] text-white font-semibold px-6 grid place-items-center hover:brightness-95"
-              >
-                Find Tutors
-              </Link>
-            </div>
-            <p className="text-xs text-gray-200 mt-2">
-              Tip: Try “Math KCSE” or “English IGCSE”.
-            </p>
-          </div>
-        </div>
-      </section>
+  {/* gradient overlay for readability */}
+  <div className="absolute inset-0 bg-[radial-gradient(1000px_480px_at_70%_10%,rgba(8,20,43,0.55)_0%,rgba(8,20,43,0.45)_35%,rgba(8,20,43,0.35)_60%),linear-gradient(180deg,rgba(8,20,43,0.65)_0%,rgba(11,27,58,0.85)_100%)]" />
+
+  {/* content */}
+  <div className="relative z-10 h-full max-w-6xl mx-auto px-6 flex flex-col items-center justify-center text-center text-white">
+    <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
+      Unlock better grades with 1-to-1 tutoring
+    </h1>
+    <p className="mt-4 max-w-2xl text-base md:text-lg text-gray-200">
+      Personalized lessons for Primary, Secondary, KCSE &amp; IGCSE/GCSE. Vetted tutors.
+      Weekly progress updates.
+    </p>
+
+    <div className="mt-10 w-full max-w-3xl">
+      <div className="bg-white rounded-2xl shadow-2xl p-3 grid grid-cols-1 md:grid-cols-4 gap-3 text-left">
+        <input
+          placeholder="Subject (e.g., Math, Chemistry)"
+          className="col-span-1 md:col-span-2 h-12 rounded-xl border border-gray-300 px-4 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#0B1B3A] bg-white"
+        />
+        <select
+          className="h-12 rounded-xl border border-gray-300 px-4 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#0B1B3A] appearance-none"
+          defaultValue="Level"
+        >
+          <option disabled>Level</option>
+          <option>Primary</option>
+          <option>Secondary</option>
+          <option>IGCSE / GCSE</option>
+          <option>KCSE</option>
+          <option>University</option>
+        </select>
+        <Link
+          href="#curriculum"
+          className="h-12 rounded-xl bg-[#25D366] text-white font-semibold px-6 grid place-items-center hover:brightness-95"
+        >
+          Find Tutors
+        </Link>
+      </div>
+      <p className="text-xs text-gray-200 mt-2">
+        Tip: Try “Math KCSE” or “English IGCSE”.
+      </p>
+    </div>
+  </div>
+</section>
+
 
       {/* ===== CURRICULUM TABS (unique) ===== */}
       <section id="curriculum" className="py-16 px-6 max-w-6xl mx-auto">
@@ -491,53 +534,55 @@ export default function Page() {
   </div>
 </section>
 
-      {/* ===== TESTIMONIALS ===== */}
-      <section id="testimonials" className="py-16 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#0B1B3A] text-center mb-12">
-          Parent & Student Feedback
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              name: "Sarah K.",
-              role: "Parent, Kilimani",
-              quote:
-                "Our son jumped from a C to an A- in Math within a term. Weekly updates kept us confident.",
-            },
-            {
-              name: "Brian M.",
-              role: "Student, KCSE",
-              quote:
-                "Chemistry finally clicked. The tutor broke concepts down and drilled past papers with me.",
-            },
-            {
-              name: "Aisha N.",
-              role: "IGCSE Student",
-              quote:
-                "English writing improved fast. I loved the practical tips and clear feedback.",
-            },
-          ].map((t) => (
-            <div
-              key={t.name}
-              className="p-8 rounded-3xl border border-gray-100 shadow-sm bg-white"
-            >
-              <div className="flex items-center gap-4">
-                <div className="h-14 w-14 rounded-full grid place-items-center bg-gray-100 text-gray-600 text-sm">
-                  {t.name
-                    .split(" ")
-                    .map((s) => s[0])
-                    .join("")}
-                </div>
-                <div>
-                  <div className="font-semibold">{t.name}</div>
-                  <div className="text-sm text-gray-500">{t.role}</div>
-                </div>
-              </div>
-              <p className="mt-4 text-gray-700">“{t.quote}”</p>
-            </div>
-          ))}
+{/* ===== TESTIMONIALS ===== */}
+<section id="testimonials" className="py-16 px-6 max-w-6xl mx-auto">
+  <h2 className="text-3xl md:text-4xl font-bold text-[#0B1B3A] text-center mb-12">
+    Parent & Student Feedback
+  </h2>
+  <div className="grid md:grid-cols-3 gap-8">
+    {[
+      {
+        name: "Sarah K.",
+        role: "Parent, Kilimani",
+        quote:
+          "Our son jumped from a C to an A- in Math within a term. Weekly updates kept us confident.",
+        avatar: "/avatars/sarah.jpg",
+      },
+      {
+        name: "Brian M.",
+        role: "Student, KCSE",
+        quote:
+          "Chemistry finally clicked. The tutor broke concepts down and drilled past papers with me.",
+        avatar: "/avatars/brian.jpg",
+      },
+      {
+        name: "Aisha N.",
+        role: "IGCSE Student",
+        quote:
+          "English writing improved fast. I loved the practical tips and clear feedback.",
+        avatar: "/avatars/aisha.jpg",
+      },
+    ].map((t) => (
+      <div
+        key={t.name}
+        className="p-8 rounded-3xl border border-gray-100 shadow-sm bg-white"
+      >
+        <div className="flex items-center gap-4">
+          <Avatar
+            src={t.avatar}
+            alt={`${t.name} photo`}
+            fallback={t.name.split(' ').map(s=>s[0]).join('')}
+          />
+          <div>
+            <div className="font-semibold">{t.name}</div>
+            <div className="text-sm text-gray-500">{t.role}</div>
+          </div>
         </div>
-      </section>
+        <p className="mt-4 text-gray-700">“{t.quote}”</p>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* ===== FAQ (unique) ===== */}
       <section id="faq" className="py-16 px-6 max-w-6xl mx-auto">
