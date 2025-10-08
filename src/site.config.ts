@@ -1,28 +1,32 @@
-﻿export const site = {
-  brand: "Estate",
-  baseUrl: "https://RealEstate.tech24.co.ke",
-  metaTitle: "EstateÂ· Real Estate Firm Â· Nairobi",
+export const site = {
+  brand: "Bright Mind Tutors",
+  baseUrl: "https://education.tech24.co.ke",
+  metaTitle: "Bright Mind Tutors · 1-to-1 Tuition in Nairobi (KCSE, IGCSE/GCSE, Primary & Secondary)",
   metaDescription:
-    "Justice. Expertise. Integrity. Your Trusted legal representation in Nairobi: Corporate, Real Estate & Conveyancing, Family, Criminal Defense.",
-  address: "CBD, Nairobi, Kenya",
+    "Personalized 1-to-1 tutoring in Nairobi: Math, Sciences, Languages, Business & Coding. Vetted tutors, clear progress, WhatsApp support for parents.",
+
+  address: "Nairobi, Kenya",
   contact: {
     phone: "+254 748 699 460",
-    email: "info@realestatepro.co.ke",
+    email: "hello@tech24.co.ke",
     whatsapp: "254748699460",
-    mapsUrl: "https://maps.google.com/?q=Nairobi+CBD",
+    mapsUrl: "https://maps.google.com/?q=Nairobi%2C+Kenya",
   },
+
   hero: {
-    title: "Justice. Expertise. Integrity.",
-    subtitle: "Your trusted legal partner in Nairobi.",
+    title: "Better grades. More confidence.",
+    subtitle:
+      "1-to-1 tutoring for Primary, Secondary, KCSE & IGCSE/GCSE — at home or online.",
     ctaText: "Chat on WhatsApp",
   },
+
+  // Optional content used by sections/cards
   services: [
-    { title: "Corporate & Commercial", desc: "Company formation, contracts, compliance, negotiations." },
-    { title: "Real Estate & Conveyancing", desc: "Title searches, transfers, leases, due diligence." },
-    { title: "Family & Criminal Real Estate", desc: "Family matters and criminal defense." },
+    { title: "Math & Physics", desc: "Foundations, exam drills, step-by-step problem solving." },
+    { title: "Chemistry & Biology", desc: "Practical understanding and exam strategies." },
+    { title: "English & Kiswahili", desc: "Reading, writing, comprehension, speaking." },
+    { title: "Business & Accounting", desc: "Concepts, past papers, simplified methods." },
+    { title: "Coding & Robotics", desc: "Scratch, Python/JS basics, logical thinking." },
+    { title: "Study Skills", desc: "Revision plans, spaced practice, memory techniques." },
   ],
 };
-
-
-
-

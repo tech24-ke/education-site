@@ -2,7 +2,8 @@
 import type { Metadata } from "next";
 import { site } from "@/site.config";
 
-const ogImage = "/templates/realestate-hero.jpg";
+// You can add a real OG image later (1200x630). Leaving a placeholder path is fine.
+const ogImage = "/templates/education-hero.jpg";
 
 export const metadata: Metadata = {
   title: site.metaTitle,
@@ -14,10 +15,10 @@ export const metadata: Metadata = {
     siteName: site.brand,
     images: [
       {
-        url: ogImage,         // resolved against metadataBase
+        url: ogImage,
         width: 1200,
         height: 630,
-        alt: `Modern villa – ${site.brand}`,
+        alt: `Bright Mind Tutors – ${site.brand}`,
       },
     ],
   },
@@ -44,5 +45,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-
-
